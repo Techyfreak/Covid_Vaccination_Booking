@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+          <tr>
+            <th>Center Name</th>
+            <th>Center City</th>
+            <th>Center Address</th>
+            <th>Slots Filled</th>
+            <th>Edit</th>
+            <!-- <th>Delete</th> -->
+          </tr>
+        </thead>
+        <tbody>
+            
+          <% for( let i = 0; i < centres.length; i++ ) { %>
+            <tr>
+              <td><%= centres[i].centre_name %></td>
+              <td><%= centres[i].centre_address %></td>
+              <td><%= centres[i].centre_city %></td>
+              <td><%= centres[i].slots_filled %></td>
+              <!-- <td><a class="edit-button" href="/update/<%#= centres[i].centre_id %>">Edit</a></td> -->
+              <td id="itemId"><%= centres[i].centre_id %></td>
+              <!-- <td><button class="delete-button" onclick="deletItem()">Delete</button></td>               -->
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+</body>
+</html>

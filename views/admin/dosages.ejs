@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Navbar with Add and Update Popups</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+    }
+
+    .navbar .actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .add-button,
+    .navbar .update-button {
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      margin: auto;
+      width: 400px;
+      max-width: 90%;
+      position: relative;
+    }
+
+    .popup-content h2 {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .popup-content label {
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .popup-content input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .popup-content button {
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-half {
+      flex: 1;
+      background-image: url("https://www.shutterstock.com/image-photo/admin-text-word-written-neon-260nw-1906709194.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .right-half {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+      margin: 20px;
+      background-color: #f2f2f2;
+    }
+
+    .right-half h2 {
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      padding: 5px;
+      width: 200px;
+    }
+
+    .submit-button {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: gray;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: bold;
+      background-color: black;
+      color: white;
+      font-family: "Arial", sans-serif;
+    }
+
+    .edit-button, .delete-button {
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .edit-button:hover, .delete-button:hover {
+      background-color: gray;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: lightgray;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: white;
+    }
+  </style>
+  <script>
+    function togglePopup(popupId) {
+      var popup = document.getElementById(popupId);
+      popup.style.display = (popup.style.display === "block") ? "none" : "block";
+    }
+
+    function changeButtonColor(button) {
+      button.style.backgroundColor = "gray";
+    }
+  </script>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">Get Dosage Detail</div>
+    <div class="actions">
+      <button class="add-button" onclick="togglePopup('add-popup')">Add</button>
+    <a href="/"> <button class="update-button" onclick="togglePopup('update-popup')">Logout</button></a>
+    </div>
+  </div>
+
+  <div class="popup" id="add-popup">
+    <div class="popup-content">
+      <button class="close-button" onclick="togglePopup('add-popup')">&times;</button>
+      <h2>Add Center</h2>
+      <form action="/adddosagedetails" method="post">
+        <label for="addCenterName">Center Name:</label>
+        <input type="text" id="addCenterName" name="centre_name" required>
+        <label for="addCenterCity">Dosages:</label>
+        <input type="text" id="addCenterCity" name="dosages" required>
+        <label for="addCenterAddress">Dosages Left:</label>
+        <input type="text" id="addCenterAddress" name="dosages_left" required>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup" id="update-popup">
+    <div class="popup-content">
+      <button class="close-button" onclick="togglePopup('update-popup')">&times;</button>
+      <h2>Update Center</h2>
+      <form>
+        <label for="updateCenterName">Center Name:</label>
+        <input type="text" id="updateCenterName" name="centerName" required>
+        <label for="updateCenterCity">Dosages:</label>
+        <input type="text" id="updateCenterCity" name="centerCity" required>
+        <label for="updateCenterAddress">Dosages Left:</label>
+        <input type="text" id="updateCenterAddress" name="centerAddress" required>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-half"></div>
+    <div class="right-half">
+      <table>
+        <thead>
+          <tr>
+            <th>Center Name</th>
+            <th>Dosages</th>
+            <th>Dosages Left</th>
+            <th>Id</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for( let i = 0; i < dosages.length; i++ ) { %>
+            <tr>
+              <td><%= dosages[i].centre_name %></td>
+              <td><%= dosages[i].dosages %></td>
+              <td><%= dosages[i].dosages_left %></td>
+              
+              <td id="itemId"><%= dosages[i].dosages_id %></td>
+              <td><button class="delete-button" onclick="deletItem()">Delete</button></td>  
+            </tr>          
+          <% } %>
+          
+        </tbody>
+      </table>
+      
+    </div>
+    <script>
+
+      const deletItem = () => {
+        
+        const id = document.getElementById("itemId").innerHTML
+        const item = parseInt(id)
+        console.log(item);
+
+        fetch(`http://localhost:8080/deletedosagedetails/${item}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.text()) // or res.json()
+          .then((res) => console.log(res));
+      };
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    
+    
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-half {
+      flex: 1;
+      background-image: url("https://images.mid-day.com/images/images/2022/oct/october1-poli_d.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .right-half {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+      margin: 20px;
+      background-color: #f2f2f2;
+    }
+
+    .right-half h2 {
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      padding: 5px;
+      width: 200px;
+    }
+
+    .submit-button {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: gray;
+    }
+
+    .signup-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .signup-button:hover {
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+    
+  <div class="container">
+    <div class="left-half"></div>
+    <div class="right-half">
+      <a href="/register"> <button class="signup-button">Sign Up</button></a>
+      <h2>Login</h2>
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

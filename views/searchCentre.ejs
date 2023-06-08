@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Center Details</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+      }
+
+      th {
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        font-family: "Arial", sans-serif;
+      }
+
+      .edit-button,
+      .delete-button {
+        background-color: black;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .edit-button:hover,
+      .delete-button:hover {
+        background-color: gray;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: lightgray;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: white;
+      }
+
+      
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      padding: 5px;
+      font-size: 16px;
+      width: 200px;
+    }
+
+    .search-button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      outline: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    </style>
+    <script>
+      function changeButtonColor(button) {
+        button.style.backgroundColor = "gray";
+      }
+    </script>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Center Name</th>
+          <th>Center City</th>
+          <th>Center Address</th>
+          <th>Slots Filled</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          <form action="/searchcentre" method="post">
+            <div class="search-bar">
+              <input class="search-input" type="text" placeholder="Search...">
+              <button class="search-button">Search</button>
+            </div>
+          </form>
+        </div>
+
+        <% for( let i = 0; i < centres.length; i++ ) { %>
+        <tr>
+          <td><%= centres[i].centre_name %></td>
+          <td><%= centres[i].centre_city %></td>
+          <td><%= centres[i].centre_address %></td>
+          <td><%= centres[i].slots_filled %></td>
+        </tr>
+
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
