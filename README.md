@@ -1,2 +1,2 @@
 # Covid_Vaccination_Booking
-The Backend project for booking slots for covid vaccination
+A web development initiative for scheduling COVID-19 vaccination slots, with separate user and admin login profiles, enabling efficient slot booking and management.
